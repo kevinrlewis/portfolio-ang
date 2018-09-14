@@ -1,0 +1,27 @@
+/*.header {
+  text-align: center;
+}
+
+.nav-link {
+  padding-left: 1em;
+  padding-right: 1em;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  color: red!important;
+  cursor: pointer;
+}
+
+.nav-link:visited {
+  color: black;
+}
+
+.divider {
+  border-right: black solid 1px;
+}
+
+.model-content {
+  border-radius: 0;
+}*/

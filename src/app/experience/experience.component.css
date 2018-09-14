@@ -1,0 +1,11 @@
+p {
+  margin-bottom: 0;
+}
+
+ul {
+  margin-bottom: 0;
+}
+
+.ext > ul > li {
+  font-size: 0.8em;
+}
