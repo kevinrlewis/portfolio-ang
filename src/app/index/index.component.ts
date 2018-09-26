@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../user';
 
@@ -8,22 +8,22 @@ import { User } from '../user';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
+  postForm:FormGroup;
+  username:string;
+  password:string;
+
   closeResult: string;
   user = new User('', '');
   submitted = false;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private fb: FormBuilder) { }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: 'mod-modal-window'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      this.user.username = '';
-      this.user.password = '';
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      this.user.username = '';
-      this.user.password = '';
     });
   }
 
@@ -42,5 +42,10 @@ export class IndexComponent {
     this.submitted = true;
   }
 
-  get diagnostic() { return JSON.stringify(this.user); }
+  ngOnInit() {
+    this.postForm = this.fb.group({
+      username: [this.username],
+      password: [this.password]
+    });
+  }
 }
