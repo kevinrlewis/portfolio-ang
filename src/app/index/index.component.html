@@ -1,5 +1,5 @@
 <div class='container-fluid'>
-  <button class='btn btn-outline-dark' (click)="open(content)">Post</button>
+  <button *ngIf="!auth_success" class='btn btn-outline-dark' (click)="open(content)">Post</button>
   <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Sign in</h4>
@@ -30,4 +30,5 @@
     </div>
   </ng-template>
 </div>
+<app-create-post *ngIf="auth_success"></app-create-post>
 <pre>{{closeResult}}</pre>

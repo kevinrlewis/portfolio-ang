@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../user';
+
+import { CreatePostComponent } from '../create-post/create-post.component'
 
 @Component({
   selector: 'app-index',
@@ -12,12 +15,14 @@ export class IndexComponent implements OnInit {
   postForm:FormGroup;
   username:string;
   password:string;
+  authresponse: AuthResponse;
 
   closeResult: string;
   user = new User('', '');
-  submitted = false;
+  url = 'http://localhost:8080/api/v1/auth';
+  auth_success = false;
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder) { }
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private http: HttpClient) { }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: 'mod-modal-window'}).result.then((result) => {
@@ -39,7 +44,33 @@ export class IndexComponent implements OnInit {
 
   private onSubmit() {
     console.log('form was submitted!');
-    this.submitted = true;
+    this.http.post<AuthResponse>(
+      this.url,
+      {
+        "username": this.postForm.value.username, "password": this.postForm.value.password
+      })
+      .subscribe(
+        (response) => {
+          console.log(response);
+          console.log(response.status);
+          // authentication failed
+          if(response.status != 200) {
+            this.auth_success = false;
+          }
+          // authentication was successful
+          else if(response.status == 200) {
+            this.auth_success = true;
+          }
+          // for some other odd reason
+          else {
+            this.auth_success = false;
+          }
+        },
+        error => {
+          console.log(error);
+          this.auth_success = false;
+        }
+      );
   }
 
   ngOnInit() {
@@ -48,4 +79,9 @@ export class IndexComponent implements OnInit {
       password: [this.password]
     });
   }
+}
+
+export interface AuthResponse {
+  status: number,
+  title: string
 }
