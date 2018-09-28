@@ -1,0 +1,8 @@
+<div class='container-fluid'>
+  <form [formGroup]="createPostForm">
+    <div class='form-group align-right'>
+      <div class='' [froalaEditor] formControlName='createPostArea'></div>
+      <button class='btn btn-outline-dark col-sm-12 col-md-2' type='submit' (click)='onSubmit()'>Submit Post</button>
+    </div>
+  </form>
+</div>
