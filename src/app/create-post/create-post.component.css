@@ -2,3 +2,12 @@
   border-radius: 0;
   margin-top: 0.3em;
 }
+
+#title {
+  border-radius: 0;
+  border-top: 5px solid #222;
+}
+
+#title:focus {
+
+}

@@ -1,7 +1,12 @@
 <div class='container-fluid'>
   <form [formGroup]="createPostForm">
+    <div class='form-group'>
+      <input type='text' class='form-control col-sm-12 col-md-4' id='title' placeholder='Title' formControlName='postTitle'/>
+    </div>
     <div class='form-group align-right'>
-      <div class='' [froalaEditor] formControlName='createPostArea'></div>
+      <!-- <div class='' [froalaEditor] formControlName='createPostArea'></div> -->
+      <!-- <app-ngx-editor [placeholder]="'Type...'" [spellcheck]="true" formControlName='createPostArea' height="100px"></app-ngx-editor> -->
+      <quill-editor formControlName='createPostArea'></quill-editor>
       <button class='btn btn-outline-dark col-sm-12 col-md-2' type='submit' (click)='onSubmit()'>Submit Post</button>
     </div>
   </form>

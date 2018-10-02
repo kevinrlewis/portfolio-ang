@@ -16,6 +16,7 @@ export class IndexComponent implements OnInit {
   username:string;
   password:string;
   authresponse: AuthResponse;
+  userid:number;
 
   closeResult: string;
   user = new User('', '');
@@ -60,6 +61,7 @@ export class IndexComponent implements OnInit {
           // authentication was successful
           else if(response.status == 200) {
             this.auth_success = true;
+            this.userid = response.id;
           }
           // for some other odd reason
           else {
@@ -83,5 +85,6 @@ export class IndexComponent implements OnInit {
 
 export interface AuthResponse {
   status: number,
-  title: string
+  title: string,
+  id: number
 }
