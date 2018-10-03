@@ -1,7 +1,4 @@
 <div class='container-fluid'>
-  <button *ngIf="!auth_success" class='btn btn-outline-dark btn-circle' (click)="open(content)">
-    <fa name="pencil" aria-hidden="true"></fa>
-  </button>
   <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Sign in</h4>
@@ -33,4 +30,7 @@
   </ng-template>
 </div>
 <app-create-post *ngIf="auth_success" [userid]="userid"></app-create-post>
+<button *ngIf="!auth_success" class='btn btn-outline-dark btn-circle' id='postButton' (click)="open(content)">
+  <fa name="pencil" aria-hidden="true"></fa>
+</button>
 <pre>{{closeResult}}</pre>

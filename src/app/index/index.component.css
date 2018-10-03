@@ -9,3 +9,9 @@
 .mod-modal-window .model-dialog .model-content {
   border-radius: 0;
 }
+
+#postButton {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
