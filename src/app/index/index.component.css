@@ -11,7 +11,13 @@
 }
 
 #postButton {
-  position: absolute;
+  position: fixed;
   bottom: 1em;
   right: 1em;
+  z-index: 100;
+  background-color: black;
+}
+
+#postButton:hover {
+  background-color: #222;
 }

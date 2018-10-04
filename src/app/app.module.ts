@@ -18,6 +18,7 @@ import { AppsComponent } from './apps/apps.component';
 import { EducationComponent } from './education/education.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { PostDisplayComponent } from './post-display/post-display.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     AppsComponent,
     EducationComponent,
     ExperienceComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostDisplayComponent
   ],
   imports: [
     BrowserModule,

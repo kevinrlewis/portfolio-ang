@@ -11,3 +11,8 @@
 #title:focus {
 
 }
+
+.create-post-form > * {
+  margin: 0 auto;
+  margin-bottom: 0.8em;
+}
