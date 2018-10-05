@@ -1,21 +1,28 @@
 <nav class='navbar navbar-expand-sm navbar-dark bg-dark' style='margin-bottom: 1em;'>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" ng-init="isCollapsed = true" (click)='isCollapsed = !isCollapsed' aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+  <!-- <div class='navbar-collapse' id='navbarSupportedContent' [@openClose]="isCollapsed ? 'closed' : 'open'" [ngClass]="{'collapse': isCollapsed}"> -->
+  <div class='navbar-collapse' id='navbarSupportedContent' [@openClose]="((isCollapsed ? 'closed' : 'open'))">
     <ul class="navbar-nav mr-auto">
       <li class='nav-item'>
-        <a class='col-3 col-sm nav-link' routerLink='/'>Blog</a>
+        <a class='col-3 col-sm nav-link' (click)='isCollapsed = !isCollapsed' routerLink='/'>Blog</a>
       </li>
       <li class='nav-item'>
-        <a class='col-3 col-sm nav-link' routerLink='/apps'>Apps</a>
+        <a class='col-3 col-sm nav-link' (click)='isCollapsed = !isCollapsed' routerLink='/apps'>Apps</a>
       </li>
       <li class='nav-item'>
-        <a class='col-3 col-sm nav-link' routerLink='/experience'>Experience</a>
+        <a class='col-3 col-sm nav-link' (click)='isCollapsed = !isCollapsed' routerLink='/experience'>Experience</a>
       </li>
       <li class='nav-item'>
-        <a class='col-3 col-sm nav-link' routerLink='/education'>Education</a>
+        <a class='col-3 col-sm nav-link' (click)='isCollapsed = !isCollapsed' routerLink='/education'>Education</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<!-- <script js>
+$('.navbar-nav>li>a').on('click', function(){
+    $('.navbar-collapse').collapse('hide');
+});
+</script> -->

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -40,7 +41,8 @@ import { PostDisplayComponent } from './post-display/post-display.component';
     NgbModule.forRoot(),
     HttpClientModule,
     QuillModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

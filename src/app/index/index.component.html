@@ -29,10 +29,10 @@
     </div>
   </ng-template>
 </div>
-<!-- <app-create-post *ngIf="auth_success" [userid]="userid"></app-create-post> -->
-<app-create-post [userid]="userid"></app-create-post>
+<app-create-post *ngIf="auth_success" (close)='close()' [userid]="userid"></app-create-post>
+<!-- <app-create-post [userid]="userid"></app-create-post> -->
 <app-post-display></app-post-display>
 <button *ngIf="!auth_success" class='btn btn-outline-dark btn-circle' id='postButton' (click)="open(content)">
   <fa name="pencil" aria-hidden="true"></fa>
 </button>
-<pre>{{closeResult}}</pre>
+<!-- <pre>{{closeResult}}</pre> -->

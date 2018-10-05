@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,10 +8,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+  @Output()
+  close:EventEmitter<any> = new EventEmitter();
 
   @Input()
   userid:number;
 
+  _ref:any;
   createPostForm:FormGroup;
   title:string;
   content:string;
@@ -38,6 +41,11 @@ export class CreatePostComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  private onClose() {
+    console.log('closing postForm');
+    this.close.emit();
   }
 
   ngOnInit() {

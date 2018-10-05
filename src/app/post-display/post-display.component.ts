@@ -22,7 +22,15 @@ export class PostDisplayComponent implements OnInit {
     this.http.get<PostsResponse>(this.url)
       .subscribe(
         (response) => {
-          this.posts = response.data;
+          console.log(response);
+          // if no posts were retrieved
+          if (response.status != 200) {
+            this.posts = JSON.parse('[{ "post": "Error retrieving posts.", "title":">:(" }]');
+          } else if (response.status == 200 && response.data.length == 0) {
+            this.posts = JSON.parse('[{ "post": "No posts.", "title":":(" }]');
+          } else {
+            this.posts = response.data;
+          }
           console.log(this.posts);
         },
         error => {
@@ -36,5 +44,5 @@ export class PostDisplayComponent implements OnInit {
 export interface PostsResponse {
   status: number,
   title: string,
-  data: object
+  data: any
 }

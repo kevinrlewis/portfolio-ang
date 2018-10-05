@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../user';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { User } from '../user';
 import { CreatePostComponent } from '../create-post/create-post.component'
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['./index.component.css'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({})),
+      state('closed', style({})),
+      transition('open => closed', [
+        animate('1s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ])
+    ])
+  ]
 })
 export class IndexComponent implements OnInit {
   postForm:FormGroup;
@@ -73,6 +86,10 @@ export class IndexComponent implements OnInit {
           this.auth_success = false;
         }
       );
+  }
+
+  private close() {
+    this.auth_success = false;
   }
 
   ngOnInit() {
