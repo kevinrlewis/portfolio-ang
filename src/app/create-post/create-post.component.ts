@@ -1,6 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import * as crypto from 'crypto-js';
+
+
+declare var require:any;
+var keyword = require('./../../../../keyword.json');
 
 @Component({
   selector: 'app-create-post',
@@ -24,9 +29,12 @@ export class CreatePostComponent implements OnInit {
 
   private onSubmit() {
     console.log('text area submitted');
-    console.log('User: ', this.userid);
-    console.log(this.createPostForm.value.postTitle);
-    console.log(this.createPostForm.value.createPostArea);
+    // console.log('User: ', this.userid);
+    // console.log(this.createPostForm.value.postTitle);
+    // console.log(this.createPostForm.value.createPostArea);
+    console.log('hashed: ');
+    var hash = crypto.SHA256(keyword.keyword);
+    console.log(hash.toString(crypto.enc.Base64));
     this.http.post<PostResponse>(
       this.url,
       {
