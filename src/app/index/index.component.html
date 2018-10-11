@@ -8,7 +8,6 @@
     </div>
     <form [formGroup]="postForm">
       <div class="modal-body">
-        {{diagnostic}}
         <div class="form-group">
           <div class="input-group">
             <input class="form-control" type="text" id="username" name="username" placeholder="Username"
@@ -32,7 +31,7 @@
 <app-create-post *ngIf="auth_success" (close)='close()' [userid]="userid"></app-create-post>
 <!-- <app-create-post [userid]="userid"></app-create-post> -->
 <app-post-display></app-post-display>
-<button *ngIf="!auth_success" class='btn btn-outline-dark btn-circle' id='postButton' (click)="open(content)">
+<button *ngIf="!auth_success" class='btn btn-circle' id='postButton' (click)="open(content)">
   <fa name="pencil" aria-hidden="true"></fa>
 </button>
 <!-- <pre>{{closeResult}}</pre> -->

@@ -1,0 +1,11 @@
+.navbar {
+  background-color: #FFFFFF;
+}
+
+.navbar * {
+  color: #000000;
+}
+
+.navbar>#navbarSupportedContent>.navbar-nav>.nav-item>a:hover {
+  color: #0000FF;
+}

@@ -26,6 +26,11 @@
   border-radius: 0;
 }*/
 
-/* body {
+body {
   background-color: #222;
-} */
+  color: #FFFFFF;
+}
+
+hr {
+  border: 1px solid rgba(65,105,225,.6);
+}

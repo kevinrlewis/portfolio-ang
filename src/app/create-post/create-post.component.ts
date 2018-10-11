@@ -33,12 +33,12 @@ export class CreatePostComponent implements OnInit {
     // console.log(this.createPostForm.value.postTitle);
     // console.log(this.createPostForm.value.createPostArea);
     console.log('hashed: ');
-    var hash = crypto.SHA256(keyword.keyword);
-    console.log(hash.toString(crypto.enc.Base64));
+    var encrypted = crypto.AES.encrypt(keyword.message, keyword.keyword);
+    console.log(encrypted.toString());
     this.http.post<PostResponse>(
       this.url,
       {
-        "title": this.createPostForm.value.postTitle, "content": this.createPostForm.value.createPostArea, "id": this.userid
+        "title": this.createPostForm.value.postTitle, "content": this.createPostForm.value.createPostArea, "id": this.userid, "sign": encrypted.toString()
       })
       .subscribe(
         (response) => {

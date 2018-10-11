@@ -16,7 +16,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       state('closed', style({
         display: 'none',
         transform: 'translateY(0)',
-        maxHeight: '25px'
+        maxHeight: 'fit-content'
       })),
       transition('open => closed', [
         animate('200ms ease-in-out')
@@ -46,6 +46,10 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onResize() {
+    this.isCollapsed = true;
   }
 
 }
