@@ -1,11 +1,16 @@
 .navbar {
-  background-color: #FFFFFF;
+  background-color: #904E55;
 }
 
 .navbar * {
-  color: #000000;
+  color: #F2EFE9;
 }
 
 .navbar>#navbarSupportedContent>.navbar-nav>.nav-item>a:hover {
-  color: #0000FF;
+  color: #BFB48F;
+}
+
+.navbar-toggler {
+  background-color: #252627;
+  color: #F2EFE9;
 }

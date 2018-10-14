@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-post-display',
@@ -9,20 +10,27 @@ import { HttpClient } from '@angular/common/http';
 export class PostDisplayComponent implements OnInit {
 
   postsresponse:PostsResponse;
-  url = 'https://kevinrlewis.com/api/v1/posts';
+  url:string;
   posts:object;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if(environment.production) {
+      this.url  = 'https://kevinrlewis.com/api/v1/posts';
+    } else {
+      this.url  = 'http://localhost:8080/api/v1/posts'
+    }
+  }
 
   ngOnInit() {
     this.getPosts();
   }
 
   private getPosts() {
+    console.log(this.url);
     this.http.get<PostsResponse>(this.url)
       .subscribe(
         (response) => {
-          //console.log(response);
+          console.log(response);
           // if no posts were retrieved
           if (response.status != 200) {
             this.posts = JSON.parse('[{ "post": "Error retrieving posts.", "title":">:(" }]');
@@ -31,10 +39,10 @@ export class PostDisplayComponent implements OnInit {
           } else {
             this.posts = response.data;
           }
-          //console.log(this.posts);
+          console.log(this.posts);
         },
         error => {
-          //console.log(error);
+          console.log(error);
           this.posts = JSON.parse('[{ "post": "Error retrieving posts.", "title":">:(" }]');
         }
       );

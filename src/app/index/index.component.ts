@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { User } from '../user';
-import { CreatePostComponent } from '../create-post/create-post.component'
+import { CreatePostComponent } from '../create-post/create-post.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-index',
@@ -33,10 +34,16 @@ export class IndexComponent implements OnInit {
 
   closeResult: string;
   user = new User('', '');
-  url = 'https://kevinrlewis.com/api/v1/auth';
+  url:string;
   auth_success = false;
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private http: HttpClient) {
+    if(environment.production) {
+      this.url  = 'https://kevinrlewis.com/api/v1/auth';
+    } else {
+      this.url  = 'http://localhost:8080/api/v1/auth'
+    }
+  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: 'mod-modal-window'}).result.then((result) => {

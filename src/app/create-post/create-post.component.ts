@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import * as crypto from 'crypto-js';
+import { environment } from '../../environments/environment';
 
 
 declare var require:any;
@@ -23,9 +24,15 @@ export class CreatePostComponent implements OnInit {
   createPostForm:FormGroup;
   title:string;
   content:string;
-  url = 'https://kevinrlewis.com/api/v1/post';
+  url:string;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+    if(environment.production) {
+      this.url  = 'https://kevinrlewis.com/api/v1/post';
+    } else {
+      this.url  = 'http://localhost:8080/api/v1/post'
+    }
+  }
 
   onSubmit() {
     //console.log('text area submitted');
