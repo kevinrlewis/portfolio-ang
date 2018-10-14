@@ -33,7 +33,7 @@ export class IndexComponent implements OnInit {
 
   closeResult: string;
   user = new User('', '');
-  url = 'https://portfolio.kevinrlewis.com/api/v1/auth';
+  url = 'https://kevinrlewis.com/api/v1/auth';
   auth_success = false;
 
   constructor(private modalService: NgbModal, private fb: FormBuilder, private http: HttpClient) { }

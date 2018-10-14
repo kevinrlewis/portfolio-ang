@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class PostDisplayComponent implements OnInit {
 
   postsresponse:PostsResponse;
-  url = 'https://portfolio.kevinrlewis.com/api/v1/posts';
+  url = 'https://kevinrlewis.com/api/v1/posts';
   posts:object;
 
   constructor(private http: HttpClient) { }
