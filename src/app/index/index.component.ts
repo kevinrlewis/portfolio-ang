@@ -64,7 +64,7 @@ export class IndexComponent implements OnInit {
   }
 
   private onSubmit() {
-    console.log('form was submitted!');
+    //console.log('form was submitted!');
     this.http.post<AuthResponse>(
       this.url,
       {

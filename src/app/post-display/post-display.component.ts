@@ -26,11 +26,11 @@ export class PostDisplayComponent implements OnInit {
   }
 
   private getPosts() {
-    console.log(this.url);
+    // console.log(this.url);
     this.http.get<PostsResponse>(this.url)
       .subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
           // if no posts were retrieved
           if (response.status != 200) {
             this.posts = JSON.parse('[{ "post": "Error retrieving posts.", "title":">:(" }]');
@@ -39,10 +39,10 @@ export class PostDisplayComponent implements OnInit {
           } else {
             this.posts = response.data;
           }
-          console.log(this.posts);
+          // console.log(this.posts);
         },
         error => {
-          console.log(error);
+          // console.log(error);
           this.posts = JSON.parse('[{ "post": "Error retrieving posts.", "title":">:(" }]');
         }
       );
