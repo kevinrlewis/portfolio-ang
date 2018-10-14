@@ -1,7 +1,7 @@
 <nav (window:resize)="onResize()" class='navbar navbar-expand-sm' style='margin-bottom: 1em;'>
   <button class="navbar-toggler" type="button" ng-init="isCollapsed = true" (click)='isCollapsed = !isCollapsed' aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <!-- <span class="navbar-toggler-icon"></span> -->
-      <fa name="bars" aria-hidden="true"></fa>
+      <fa name="bars" size="lg" aria-hidden="true"></fa>
   </button>
   <!-- <div class='navbar-collapse' id='navbarSupportedContent' [@openClose]="isCollapsed ? 'closed' : 'open'" [ngClass]="{'collapse': isCollapsed}"> -->
   <div class='navbar-collapse' id='navbarSupportedContent' [@openClose]="((isCollapsed ? 'closed' : 'open'))">
@@ -20,6 +20,9 @@
       </li>
     </ul>
   </div>
+  <a href="https://www.linkedin.com/in/kevin-lewis-6887348b" target="_blank">
+    <fa class="linkedin-link" name="linkedin-square" size="2x" aria-hidden="true"></fa>
+  </a>
 </nav>
 
 <!-- <script js>

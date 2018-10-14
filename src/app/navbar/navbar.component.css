@@ -14,3 +14,14 @@
   background-color: #252627;
   color: #F2EFE9;
 }
+
+@media (min-width: 576px) {
+  #navbarSupportedContent {
+    max-height: inherit!important;
+    opacity: 1!important;
+  }
+}
+
+.linkedin-link {
+  color: #F2EFE9;
+}

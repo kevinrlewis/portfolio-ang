@@ -16,7 +16,7 @@
   right: 1em;
   z-index: 100;
   border: 1px solid rgba(255,255,255,1);
-  color: #FFFFFF;
+  color: #F2EFE9;
   background-color: #5C6D70;
 }
 
@@ -26,4 +26,8 @@
 
 .modal-title {
   color: #222;
+}
+
+ng-template {
+  background-color: #F2EFE9;
 }

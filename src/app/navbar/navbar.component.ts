@@ -11,18 +11,20 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       state('open', style({
         display: 'block',
         transform: 'translateY(0)',
-        maxHeight: '500px'
+        maxHeight: '500px',
+        opacity: 1
       })),
       state('closed', style({
         display: 'none',
         transform: 'translateY(0)',
-        maxHeight: 'fit-content'
+        maxHeight: '0px',
+        opacity: 0
       })),
       transition('open => closed', [
         animate('200ms ease-in-out')
       ]),
       transition('closed => open', [
-        animate('300ms ease-in-out')
+        animate('200ms ease-in-out')
       ]),
       // transition('* => closed', [
       //   animate('0.5s')
