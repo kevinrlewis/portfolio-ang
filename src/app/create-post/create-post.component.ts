@@ -27,7 +27,7 @@ export class CreatePostComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
-  private onSubmit() {
+  onSubmit() {
     //console.log('text area submitted');
     // console.log('User: ', this.userid);
     // console.log(this.createPostForm.value.postTitle);
@@ -53,7 +53,7 @@ export class CreatePostComponent implements OnInit {
       );
   }
 
-  private onClose() {
+  onClose() {
     //console.log('closing postForm');
     this.close.emit();
   }
