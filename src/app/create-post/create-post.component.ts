@@ -23,7 +23,7 @@ export class CreatePostComponent implements OnInit {
   createPostForm:FormGroup;
   title:string;
   content:string;
-  url = 'http://0.0.0.0:8080/api/v1/post';
+  url = 'https://portfolio.kevinrlewis.com/api/v1/post';
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
