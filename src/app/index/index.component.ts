@@ -33,7 +33,7 @@ export class IndexComponent implements OnInit {
 
   closeResult: string;
   user = new User('', '');
-  url = 'http://localhost:8080/api/v1/auth';
+  url = 'http://0.0.0.0:8080/api/v1/auth';
   auth_success = false;
 
   constructor(private modalService: NgbModal, private fb: FormBuilder, private http: HttpClient) { }
@@ -65,8 +65,8 @@ export class IndexComponent implements OnInit {
       })
       .subscribe(
         (response) => {
-          console.log(response);
-          console.log(response.status);
+          //console.log(response);
+          //console.log(response.status);
           // authentication failed
           if(response.status != 200) {
             this.auth_success = false;
@@ -82,7 +82,7 @@ export class IndexComponent implements OnInit {
           }
         },
         error => {
-          console.log(error);
+          //console.log(error);
           this.auth_success = false;
         }
       );

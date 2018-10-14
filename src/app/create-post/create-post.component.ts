@@ -23,18 +23,18 @@ export class CreatePostComponent implements OnInit {
   createPostForm:FormGroup;
   title:string;
   content:string;
-  url = 'http://localhost:8080/api/v1/post';
+  url = 'http://0.0.0.0:8080/api/v1/post';
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   private onSubmit() {
-    console.log('text area submitted');
+    //console.log('text area submitted');
     // console.log('User: ', this.userid);
     // console.log(this.createPostForm.value.postTitle);
     // console.log(this.createPostForm.value.createPostArea);
-    console.log('hashed: ');
+    //console.log('hashed: ');
     var encrypted = crypto.AES.encrypt(keyword.message, keyword.keyword);
-    console.log(encrypted.toString());
+    //console.log(encrypted.toString());
     this.http.post<PostResponse>(
       this.url,
       {
@@ -42,17 +42,19 @@ export class CreatePostComponent implements OnInit {
       })
       .subscribe(
         (response) => {
-          console.log(response);
-          console.log(response.status);
+          // display the post was successfully stored
+          //console.log(response);
+          //console.log(response.status);
         },
         error => {
-          console.log(error);
+          // display error
+          //console.log(error);
         }
       );
   }
 
   private onClose() {
-    console.log('closing postForm');
+    //console.log('closing postForm');
     this.close.emit();
   }
 

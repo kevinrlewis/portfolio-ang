@@ -18,10 +18,22 @@
   margin-bottom: 0.8em;
 }
 
+.btn-submit {
+  background-color: #FFFFFF;
+}
+
+.btn-close {
+  background-color: #FFFFFF;
+}
+
 .btn-submit:hover {
   background-color: #008000;
 }
 
 .btn-close:hover {
   background-color: #B22222;
+}
+
+quill-editor {
+  background-color: #FFFFFF;
 }
