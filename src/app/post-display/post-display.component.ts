@@ -25,7 +25,7 @@ export class PostDisplayComponent implements OnInit {
     this.getPosts();
   }
 
-  private getTime(date?: string) {
+  private getTime(date: string) {
     let newDate = new Date(date);
     return newDate != null ? newDate.getTime() : 0;
   }
