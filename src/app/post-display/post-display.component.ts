@@ -11,7 +11,7 @@ export class PostDisplayComponent implements OnInit {
 
   postsresponse:PostsResponse;
   url:string;
-  posts:object;
+  posts:Array<Post>;
 
   constructor(private http: HttpClient) {
     if(environment.production) {
@@ -25,12 +25,17 @@ export class PostDisplayComponent implements OnInit {
     this.getPosts();
   }
 
+  private getTime(date?: string) {
+    let newDate = new Date(date);
+    return newDate != null ? newDate.getTime() : 0;
+  }
+
   private getPosts() {
     // console.log(this.url);
     this.http.get<PostsResponse>(this.url)
       .subscribe(
         (response) => {
-          // console.log(response);
+          console.log(response);
           // if no posts were retrieved
           if (response.status != 200) {
             console.log(response);
@@ -40,7 +45,9 @@ export class PostDisplayComponent implements OnInit {
           } else {
             this.posts = response.data;
           }
-          // console.log(this.posts);
+          this.posts.sort((a, b) => {
+            return this.getTime(a.createdt) - this.getTime(b.createdt);
+          });
         },
         error => {
           // console.log(error);
@@ -55,4 +62,10 @@ export interface PostsResponse {
   status: number,
   title: string,
   data: any
+}
+
+export interface Post {
+  title: string,
+  post: string,
+  createdt: string
 }
