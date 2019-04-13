@@ -41,7 +41,7 @@ export class IndexComponent implements OnInit {
     if(environment.production) {
       this.url  = 'https://kevinrlewis.com/api/v1/auth';
     } else {
-      this.url  = 'http://localhost:8080/api/v1/auth'
+      this.url  = 'http://localhost:3000/api/v1/auth'
     }
   }
 

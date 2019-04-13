@@ -17,7 +17,7 @@ export class PostDisplayComponent implements OnInit {
     if(environment.production) {
       this.url  = 'https://kevinrlewis.com/api/v1/posts';
     } else {
-      this.url  = 'http://localhost:8080/api/v1/posts'
+      this.url  = 'http://localhost:3000/api/v1/posts'
     }
   }
 
@@ -33,6 +33,7 @@ export class PostDisplayComponent implements OnInit {
           // console.log(response);
           // if no posts were retrieved
           if (response.status != 200) {
+            console.log(response);
             this.posts = JSON.parse('[{ "post": "Error retrieving posts.", "title":">:(" }]');
           } else if (response.status == 200 && response.data == null) {
             this.posts = JSON.parse('[{ "post": "No posts yet.", "title":":(" }]');
